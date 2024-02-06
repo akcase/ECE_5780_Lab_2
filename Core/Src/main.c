@@ -176,9 +176,12 @@ int main(void)
 	/* Configure SYSCFG */
 	SYSCFG->EXTICR[0] &= ~(1<<3);
 	
+	// Set Systic to highest priority
 	NVIC_SetPriority(SysTick_IRQn, 2);
 	
+	// Enable EXTI interrupt
 	NVIC_EnableIRQ(EXTI0_1_IRQn);
+	// Set EXTI interrupt to lowest priority
 	NVIC_SetPriority(EXTI0_1_IRQn, 3);
 
   /* Infinite loop */
